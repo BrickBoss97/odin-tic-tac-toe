@@ -1,126 +1,122 @@
 :root {
-    --font-xsmall: 12px;
-    --font-small: 16px;
-    --font-medium: 18px;
-    --font-large: 22px;
-    --white: rgb(255, 255, 255);
-    --dark-gray: rgb(42, 42, 42);
-    --gray: rgb(61, 61, 61);
-    --off-white: rgb(241, 241, 241);
-    --blue: rgb(106, 118, 218);
-    --red: rgb(188, 101, 96);
-    --green: rgb(81, 97, 64); 
-    --dark-green: rgb(64, 76, 50); 
+	--font-xsmall: 12px;
+	--font-small: 16px;
+	--font-medium: 18px;
+	--font-large: 22px;
+	--white: rgb(255, 255, 255);
+	--dark-gray: rgb(42, 42, 42);
+	--gray: rgb(61, 61, 61);
+	--off-white: rgb(241, 241, 241);
+	--blue: rgb(106, 118, 218);
+	--red: rgb(188, 101, 96);
+	--green: rgb(81, 97, 64);
+	--dark-green: rgb(64, 76, 50);
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
 }
-  
+
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 header {
-    background-color: var(--off-white);
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
+	background-color: var(--off-white);
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
 }
 
 .content {
-    background-color:#bbb;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-items: center;
-    padding: 32px;
-    position: relative;
+	background-color: #bbb;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: center;
+	padding: 32px;
+	position: relative;
 }
 
 button:hover {
-    background-color: var(--dark-gray);
+	background-color: var(--dark-gray);
 }
 
 button:active {
-    background-color: var(--dark-gray);
-    transform: translateY(1px);
+	background-color: var(--dark-gray);
+	transform: translateY(1px);
 }
 
 button {
-    background-color: var(--gray); 
-    box-shadow:
-        1.4px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-        3.3px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-        6.2px 12.5px 10px rgba(0, 0, 0, 0.035);
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+	background-color: var(--gray);
+	box-shadow: 1.4px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+		3.3px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+		6.2px 12.5px 10px rgba(0, 0, 0, 0.035);
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
 }
 
 .buttons button {
-    width: 8rem;
-    height: 2.5rem;
-    border: 3px solid var(--off-white);
+	width: 8rem;
+	height: 2.5rem;
+	border: 3px solid var(--off-white);
 }
 
 input,
 select {
-  font-family: inherit;
-  font-size: 100%;
-  width: 250px;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	font-family: inherit;
+	font-size: 100%;
+	width: 250px;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 input,
 select {
-    padding: 4px 8px;
-    font-size: 16px;
-    border: 2px solid rgb(204, 204, 204);
-    transition: 
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-    border-radius: 4px;
+	padding: 4px 8px;
+	font-size: 16px;
+	border: 2px solid rgb(204, 204, 204);
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	border-radius: 4px;
 }
 
 input:focus {
-    outline: none;
-    border-color: var(--blue);
-    box-shadow:
-        4.2px 4.3px 5.3px rgba(0, 0, 0, 0.028),
-        14.1px 14.3px 17.9px rgba(0, 0, 0, 0.042),
-        63px 64px 80px rgba(0, 0, 0, 0.07);
+	outline: none;
+	border-color: var(--blue);
+	box-shadow: 4.2px 4.3px 5.3px rgba(0, 0, 0, 0.028),
+		14.1px 14.3px 17.9px rgba(0, 0, 0, 0.042),
+		63px 64px 80px rgba(0, 0, 0, 0.07);
 }
 
 .form-container .btn {
-    margin-top: .5rem;
-    height: 2rem;
+	margin-top: 0.5rem;
+	height: 2rem;
 }
 
 .cancel,
 .remove {
-    background-color: rgb(177, 0, 0);
+	background-color: rgb(177, 0, 0);
 }
 
 .cancel:hover,
 .remove:hover {
-    background-color: rgb(132, 0, 0);
+	background-color: rgb(132, 0, 0);
 }
 
 footer {
-    background-color: var(--off-white);
-    padding: 20px;
-    text-align: center;
+	background-color: var(--off-white);
+	padding: 20px;
+	text-align: center;
 }

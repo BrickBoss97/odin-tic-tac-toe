@@ -1,7 +1,11 @@
 function formActions() {
 	const dialog = document.querySelector("dialog");
 	const newPlayerBtn = document.querySelector(".new-players");
-	const closeBtn = document.querySelector(".cancel");
+	const newGameBtn = document.querySelector(".submit");
+
+	dialog.addEventListener("cancel", (event) => {
+		event.preventDefault();
+	});
 
 	function openForm() {
 		dialog.showModal();
@@ -11,15 +15,19 @@ function formActions() {
 		dialog.close();
 	}
 
-	function getFormData() {
-		const playerOne = document.querySelector(".player-one").value;
-		const playerTwo = document.querySelector(".player-two").value;
-	}
-
 	newPlayerBtn.addEventListener("click", openForm);
-	closeBtn.addEventListener("click", closeForm);
+	newGameBtn.addEventListener("click", (event) => {
+		event.preventDefault();
+		screenController();
+		closeForm();
+	});
+
+	const getFormData = () => dialog;
+
+	openForm();
 
 	return {
+		openForm,
 		getFormData,
 	};
 }
@@ -45,19 +53,16 @@ function gameBoard() {
 	};
 }
 
-function gameController(
-	playerOneName = "Player One",
-	playerTwoName = "Player Two"
-) {
+function gameController() {
 	const board = gameBoard();
 
 	const players = [
 		{
-			name: playerOneName,
+			name: document.querySelector(".player-one").value,
 			token: "X",
 		},
 		{
-			name: playerTwoName,
+			name: document.querySelector(".player-two").value,
 			token: "O",
 		},
 	];
@@ -107,7 +112,7 @@ function gameController(
 		];
 	};
 
-	let activePlayer = players[0];
+	let activePlayer = Math.random() < 0.5 ? players[0] : players[1];
 
 	const switchActivePlayer = () => {
 		activePlayer = activePlayer === players[0] ? players[1] : players[0];
@@ -211,4 +216,3 @@ function screenController() {
 }
 
 formActions();
-screenController();

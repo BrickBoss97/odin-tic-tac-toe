@@ -17,7 +17,7 @@
 			<div class="title">Tic - Tac - Toe</div>
 		</header>
 		<dialog class="form-popup">
-			<form action="" class="form-container" id="myForm">
+			<form class="form-container" id="myForm">
 				<h1>Add New Players</h1>
 
 				<label for="player-one"><b>Player One</b></label>
@@ -25,7 +25,7 @@
 					class="player-one"
 					type="text"
 					placeholder="Enter Player Name"
-					name="player-one"
+					id="player-one"
 					required
 				/>
 
@@ -34,12 +34,11 @@
 					class="player-two"
 					type="text"
 					placeholder="Enter Player Name"
-					name="player-two"
+					id="player-two"
 					required
 				/>
 
-				<button type="submit" class="btn submit">Submit</button>
-				<button type="button" class="btn cancel">Close</button>
+				<button type="button" class="btn submit">Play Game</button>
 			</form>
 		</dialog>
 		<section class="game-container">

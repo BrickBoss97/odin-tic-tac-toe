@@ -33,7 +33,27 @@ header {
 	font-size: 35px;
 }
 
-.content {
+.form-popup {
+	background-color: var(--off-white);
+	border: 1px solid var(--gray);
+	padding: 16px;
+	border-radius: 8px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.form-container {
+	max-width: 500px;
+	padding: 0 10px;
+	background-color: var(--off-white);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.game-container {
 	background-color: #bbb;
 	display: flex;
 	flex-direction: column;
@@ -43,34 +63,43 @@ header {
 	position: relative;
 }
 
-button:hover {
-	background-color: var(--dark-gray);
-}
-
-button:active {
-	background-color: var(--dark-gray);
-	transform: translateY(1px);
-}
-
-button {
+.btn {
 	background-color: var(--gray);
 	box-shadow: 1.4px 2.8px 2.2px rgba(0, 0, 0, 0.02),
 		3.3px 6.7px 5.3px rgba(0, 0, 0, 0.028),
 		6.2px 12.5px 10px rgba(0, 0, 0, 0.035);
+	width: 8rem;
+	height: 2.5rem;
+	border: 2px solid var(--off-white);
+	border-radius: 8px;
+}
+
+.btn:hover {
+	background-color: var(--dark-gray);
+}
+
+.btn:active {
+	transform: translateY(1px);
+}
+
+.btn.cancel,
+.btn.reset {
+	background-color: rgb(177, 0, 0);
+}
+
+.btn.cancel:hover,
+.btn.reset:hover {
+	background-color: rgb(132, 0, 0);
+}
+
+button {
 	color: white;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 	border: none;
-	border-radius: 8px;
 	cursor: pointer;
-}
-
-.buttons button {
-	width: 8rem;
-	height: 2.5rem;
-	border: 3px solid var(--off-white);
 }
 
 input,
@@ -103,16 +132,30 @@ input:focus {
 .form-container .btn {
 	margin-top: 0.5rem;
 	height: 2rem;
+	width: 100%;
 }
 
-.cancel,
-.remove {
-	background-color: rgb(177, 0, 0);
+.board-container {
+	margin: 1rem;
+	display: grid;
+	grid-template-columns: repeat(3, 10rem);
+	grid-template-rows: repeat(3, 10rem);
+	background-color: var(--gray);
+	gap: 4px;
+	padding: 4px;
 }
 
-.cancel:hover,
-.remove:hover {
-	background-color: rgb(132, 0, 0);
+.player-turn {
+	margin-top: 4rem;
+	text-align: center;
+	font-size: var(--font-large);
+	font-weight: 500;
+}
+
+.game-cell {
+	color: black;
+	font-weight: 700;
+	font-size: 96px;
 }
 
 footer {

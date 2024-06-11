@@ -16,7 +16,40 @@
 		<header class="header">
 			<div class="title">Tic - Tac - Toe</div>
 		</header>
-		<section class="content"></section>
+		<dialog class="form-popup">
+			<form action="" class="form-container" id="myForm">
+				<h1>Add New Players</h1>
+
+				<label for="player-one"><b>Player One</b></label>
+				<input
+					class="player-one"
+					type="text"
+					placeholder="Enter Player Name"
+					name="player-one"
+					required
+				/>
+
+				<label for="player-two"><b>Player Two</b></label>
+				<input
+					class="player-two"
+					type="text"
+					placeholder="Enter Player Name"
+					name="player-two"
+					required
+				/>
+
+				<button type="submit" class="btn submit">Submit</button>
+				<button type="button" class="btn cancel">Close</button>
+			</form>
+		</dialog>
+		<section class="game-container">
+			<div class="controls">
+				<button class="btn new-players">New Players</button>
+				<button class="btn reset">Reset Game</button>
+			</div>
+			<div class="player-turn"></div>
+			<div class="board-container"></div>
+		</section>
 		<footer class="footer">© GPR Design</footer>
 	</body>
 	<script src="script.js"></script>

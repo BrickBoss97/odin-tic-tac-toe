@@ -1,4 +1,30 @@
-const gameBoard = function () {
+function formActions() {
+	const dialog = document.querySelector("dialog");
+	const newPlayerBtn = document.querySelector(".new-players");
+	const closeBtn = document.querySelector(".cancel");
+
+	function openForm() {
+		dialog.showModal();
+	}
+
+	function closeForm() {
+		dialog.close();
+	}
+
+	function getFormData() {
+		const playerOne = document.querySelector(".player-one").value;
+		const playerTwo = document.querySelector(".player-two").value;
+	}
+
+	newPlayerBtn.addEventListener("click", openForm);
+	closeBtn.addEventListener("click", closeForm);
+
+	return {
+		getFormData,
+	};
+}
+
+function gameBoard() {
 	let board = [
 		["", "", ""],
 		["", "", ""],
@@ -17,7 +43,7 @@ const gameBoard = function () {
 		getCell,
 		clearBoard,
 	};
-};
+}
 
 function gameController(
 	playerOneName = "Player One",
@@ -89,11 +115,6 @@ function gameController(
 
 	const getActivePlayer = () => activePlayer;
 
-	const printNewRound = () => {
-		console.log(board.getBoard());
-		console.log(`${getActivePlayer().name}'s turn.`);
-	};
-
 	const checkForWinner = (currentPlayer) => {
 		const gameHasWinner = winningConditions().some((condition) =>
 			condition.every((itemType) => itemType === currentPlayer.token)
@@ -103,33 +124,91 @@ function gameController(
 		);
 
 		if (gameHasWinner) {
-			console.log(`${getActivePlayer().name} has won`);
-			return true;
+			return `${getActivePlayer().name} has won!`;
 		} else if (!gameHasWinner && gameIsTied) {
-			console.log("Tie Game");
-			return true;
+			return "Tie Game";
 		}
 		return;
 	};
 
 	const playRound = (row, column) => {
 		if (board.getCell(row, column) != "") {
-			console.log("This cell has already been selected");
 			return;
 		}
 		board.getBoard()[row][column] = getActivePlayer().token;
 		if (checkForWinner(getActivePlayer())) {
-			board.clearBoard();
 			return;
 		}
 		switchActivePlayer();
-		printNewRound();
 	};
 
 	return {
 		playRound,
 		getActivePlayer,
+		checkForWinner,
+		getBoard: board.getBoard,
+		getCell: board.getCell,
+		clearBoard: board.clearBoard,
 	};
 }
 
-const game = gameController();
+function screenController() {
+	const game = gameController();
+	const playerTurnDiv = document.querySelector(".player-turn");
+	const boardDiv = document.querySelector(".board-container");
+	const gameDiv = document.querySelector(".game-container");
+
+	const updateScreen = () => {
+		boardDiv.textContent = "";
+
+		const board = game.getBoard();
+		const activePlayer = game.getActivePlayer();
+
+		if (game.checkForWinner(activePlayer)) {
+			playerTurnDiv.textContent = game.checkForWinner(activePlayer);
+		} else {
+			playerTurnDiv.textContent = `It's ${activePlayer.name}'s turn.`;
+		}
+
+		board.forEach((row, rowIndex) => {
+			row.forEach((cell, columnIndex) => {
+				const cellButton = document.createElement("button");
+				cellButton.classList.add("game-cell");
+				cellButton.dataset.row = rowIndex;
+				cellButton.dataset.column = columnIndex;
+				cellButton.textContent = game.getCell(rowIndex, columnIndex);
+				boardDiv.appendChild(cellButton);
+			});
+		});
+	};
+
+	function resetGame(e) {
+		if (!e.target.classList.contains("reset")) return;
+
+		game.clearBoard();
+		screenController();
+	}
+
+	function clickHandlerBoard(e) {
+		const selectedRow = e.target.dataset.row;
+		const selectedColumn = e.target.dataset.column;
+
+		if (
+			!selectedColumn ||
+			!selectedRow ||
+			game.checkForWinner(game.getActivePlayer())
+		)
+			return;
+
+		game.playRound(selectedRow, selectedColumn);
+		updateScreen();
+	}
+
+	boardDiv.addEventListener("click", clickHandlerBoard);
+	gameDiv.addEventListener("click", resetGame);
+
+	updateScreen();
+}
+
+formActions();
+screenController();
